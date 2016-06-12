@@ -58,7 +58,16 @@ $(function() {
 			repo: 'j7lab'
 		},
 
-		defaultPage: "home"
+		defaultPage: "home",
+
+		postRender: function() {
+			if (ga) {
+				ga('set', 'page', '/index.html#'+window.location.hash);
+				ga('send', 'pageview');	
+			} else {
+				console.log("no ga loaded...");
+			}
+		}
 
 	});
 });

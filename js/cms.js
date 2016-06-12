@@ -50,7 +50,10 @@ var CMS = {
 			branch: 'gh-pages',
 			host: 'https://api.github.com'
 		},
-		defaultPage: ''
+		defaultPage: '',
+		postRender: function() {
+
+		}
 	},
 	converter: new showdown.Converter(),
 	posts: [],
@@ -136,6 +139,8 @@ var CMS = {
 			if (!ret) {
 				var errorMsg = 'Post Not Found.';
 				CMS.renderError(errorMsg);
+			} else {
+				CMS.settings.postRender();
 			}
 		} else {
 			var errorMsg = 'Page not found.';
@@ -692,6 +697,9 @@ var CMS = {
 		// Check for hash changes
         $(window).on('hashchange', function () {
             CMS.render(window.location.hash);
+			if (ga) {
+
+			}
         });
 	},
 
