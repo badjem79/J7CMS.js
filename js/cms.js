@@ -461,7 +461,7 @@ var CMS = {
 		}
 
 		if(CMS.settings.mode == 'Github') {
-			url = file.link + "?key=" + CMS.requestKey;
+			url = file.link + "?key=" + CMS.settings.requestKey;
 		} else {
 			url = urlFolder + '/' + file.name;
 		}
@@ -511,7 +511,7 @@ var CMS = {
 		if(CMS.settings.mode == 'Github') {
 			var gus = CMS.settings.githubUserSettings,
 				gs = CMS.settings.githubSettings;
-			url = gs.host + '/repos/' + gus.username + '/' + gus.repo + '/contents/' + folder + '?ref=' + gs.branch + "&key=" + CMS.requestKey;
+			url = gs.host + '/repos/' + gus.username + '/' + gus.repo + '/contents/' + folder + '?ref=' + gs.branch + "&key=" + CMS.settings.requestKey;
 		} else {
 			url = folder;
 		}
@@ -610,7 +610,7 @@ var CMS = {
 		if(CMS.settings.remoteNavigation) {
 			$.ajax({
 				type: 'GET',
-				url: CMS.settings.remoteNavigation  + "?key=" + CMS.requestKey,
+				url: CMS.settings.remoteNavigation  + "?key=" + CMS.settings.requestKey,
 				dataType: 'json',
 				success: function(items) {
 					CMS.setNavBar(items);
